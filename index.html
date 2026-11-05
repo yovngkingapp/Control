@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#070b14" />
+<meta name="description" content="Practica y repasa los textos del TEA 2do Control con preguntas, retroalimentación conceptual y seguimiento de dominio." />
 <title>Zen Study · TEA 2do Control</title>
 
+<link rel="preconnect" href="https://cdn.tailwindcss.com" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -26,22 +29,19 @@
 
 <body class="relative">
 <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
+  <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div><div class="blob blob-4"></div>
 </div>
 
 <main class="relative z-10 px-4 sm:px-6 py-8 md:py-12 pb-20">
-  <section id="screen-home" class="max-w-6xl mx-auto">
+  <section id="screen-home" class="max-w-6xl mx-auto" aria-label="Inicio">
     <header class="flex items-center justify-between mb-10 fade-in">
       <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,#6366f1,#a855f7);box-shadow:0 10px 30px -10px rgba(139,92,246,.85)">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,#6366f1,#a855f7);box-shadow:0 10px 30px -10px rgba(139,92,246,.85)" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18" opacity=".0"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
         <div><h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-white">Zen Study</h1><p class="text-[0.72rem] text-slate-400 tracking-wide">Evaluación · TEA 2do Control</p></div>
       </div>
-      <div class="glass rounded-2xl px-4 py-2.5 flex items-center gap-2"><span class="text-base leading-none">🔥</span><span class="text-sm font-bold tabular" id="streak-val">0</span><span class="text-[0.68rem] text-slate-400 hidden sm:inline">días</span></div>
+      <div class="glass rounded-2xl px-4 py-2.5 flex items-center gap-2" aria-label="Racha de estudio"><span class="text-base leading-none" aria-hidden="true">🔥</span><span class="text-sm font-bold tabular" id="streak-val">0</span><span class="text-[0.68rem] text-slate-400 hidden sm:inline">días</span></div>
     </header>
 
     <div class="glass rounded-3xl p-6 sm:p-9 mb-7 fade-in"><div class="max-w-2xl">
@@ -49,56 +49,59 @@
       <h2 class="text-2xl sm:text-4xl font-extrabold leading-[1.15] text-white mb-3.5">Domina los cinco textos,<br class="hidden sm:block" /><span class="bg-gradient-to-r from-indigo-300 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">sin ruido mental.</span></h2>
       <p class="text-sm sm:text-[0.95rem] text-slate-400 leading-relaxed mb-7 max-w-xl">Banco de preguntas con retroalimentación conceptual específica por cada error, repaso exprés obligatorio de tus fallos y reporte de dominio por fuente.</p>
       <div class="flex flex-col sm:flex-row gap-3">
-        <button id="btn-start-full" class="btn-primary"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Iniciar sesión completa</button>
-        <button id="btn-start-random" class="btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Repaso aleatorio (12)</button>
+        <button id="btn-start-full" class="btn-primary" type="button"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Iniciar sesión completa</button>
+        <button id="btn-start-random" class="btn-ghost" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>Repaso aleatorio (12)</button>
       </div>
     </div></div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 mb-9 fade-in">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 mb-9 fade-in" aria-label="Estadísticas de estudio">
       <div class="glass-soft rounded-2xl p-4"><p class="text-[0.65rem] font-semibold tracking-wider text-slate-500 uppercase mb-1.5">Sesiones</p><p class="text-2xl font-extrabold text-white tabular" id="stat-sessions">0</p></div>
       <div class="glass-soft rounded-2xl p-4"><p class="text-[0.65rem] font-semibold tracking-wider text-slate-500 uppercase mb-1.5">Preguntas</p><p class="text-2xl font-extrabold text-white tabular" id="stat-answered">0</p></div>
       <div class="glass-soft rounded-2xl p-4"><p class="text-[0.65rem] font-semibold tracking-wider text-slate-500 uppercase mb-1.5">Precisión global</p><p class="text-2xl font-extrabold text-white tabular" id="stat-acc">—</p></div>
       <div class="glass-soft rounded-2xl p-4"><p class="text-[0.65rem] font-semibold tracking-wider text-slate-500 uppercase mb-1.5">Mejor sesión</p><p class="text-2xl font-extrabold text-white tabular" id="stat-best">—</p></div>
     </div>
-    <div class="flex items-end justify-between mb-4 px-1"><h3 class="text-sm font-bold tracking-wide text-slate-300 uppercase">Fuentes de estudio</h3><span class="text-[0.7rem] text-slate-500">Dominio acumulado</span></div>
+    <div class="flex items-end justify-between mb-4 px-1"><h2 class="text-sm font-bold tracking-wide text-slate-300 uppercase">Fuentes de estudio</h2><span class="text-[0.7rem] text-slate-500">Dominio acumulado</span></div>
     <div id="text-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10"></div>
-    <div class="flex justify-center"><button id="btn-reset" class="text-[0.72rem] text-slate-600 hover:text-rose-400 transition-colors underline underline-offset-4 decoration-slate-700">Reiniciar progreso guardado</button></div>
+    <div class="flex justify-center"><button id="btn-reset" class="text-[0.72rem] text-slate-600 hover:text-rose-400 transition-colors underline underline-offset-4 decoration-slate-700" type="button">Reiniciar progreso guardado</button></div>
   </section>
 
-  <section id="screen-quiz" class="hidden max-w-3xl mx-auto">
+  <section id="screen-quiz" class="hidden max-w-3xl mx-auto" aria-label="Cuestionario" aria-live="polite">
     <div class="flex items-center justify-between mb-5">
-      <button id="btn-quit" class="btn-ghost !py-2 !px-3.5 !text-[0.78rem]"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Salir</button>
+      <button id="btn-quit" class="btn-ghost !py-2 !px-3.5 !text-[0.78rem]" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Salir</button>
       <div id="quiz-mode-badge" class="text-[0.68rem] font-bold tracking-wider uppercase px-3.5 py-2 rounded-xl glass-soft text-indigo-300">Sesión</div>
-      <div class="text-[0.78rem] font-semibold text-slate-400 tabular" id="quiz-counter">1 / 10</div>
+      <div class="text-[0.78rem] font-semibold text-slate-400 tabular" id="quiz-counter" aria-live="polite">1 / 10</div>
     </div>
-    <div class="progress-track mb-8"><div class="progress-fill" id="quiz-progress" style="width:0%"></div></div>
+    <div class="progress-track mb-8" role="progressbar" aria-label="Progreso del cuestionario" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" id="quiz-progress" style="width:0%"></div></div>
     <div class="glass rounded-3xl p-5 sm:p-8 md:p-10">
       <div id="q-tag" class="inline-block text-[0.66rem] font-extrabold tracking-[0.14em] uppercase px-3 py-1.5 rounded-lg mb-6 border">Texto 1</div>
-      <h2 id="q-text" class="text-lg sm:text-xl md:text-[1.4rem] font-bold leading-snug text-white mb-7"></h2>
-      <div id="q-options" class="space-y-3"></div><div id="q-feedback" class="hidden mt-6" aria-live="polite"></div>
-      <div class="flex justify-end mt-7"><button id="btn-next" class="btn-primary hidden">Siguiente<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+      <h2 id="q-text" class="text-lg sm:text-xl md:text-[1.4rem] font-bold leading-snug text-white mb-7" tabindex="-1"></h2>
+      <div id="q-options" class="space-y-3" role="group" aria-labelledby="q-text"></div>
+      <div id="q-feedback" class="hidden mt-6" aria-live="polite"></div>
+      <div class="flex justify-end mt-7"><button id="btn-next" class="btn-primary hidden" type="button">Siguiente<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
     </div>
     <p class="text-center text-[0.68rem] text-slate-600 mt-5">Atajos: <span class="text-slate-400">1–4</span> para responder · <span class="text-slate-400">Enter</span> para continuar</p>
   </section>
 
-  <section id="screen-bridge" class="hidden max-w-2xl mx-auto"><div class="glass rounded-3xl p-7 sm:p-10 text-center fade-in">
-    <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(249,115,22,.2));border:1px solid rgba(251,191,36,.35)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
-    <p class="text-[0.68rem] font-extrabold tracking-[0.2em] text-amber-300/80 uppercase mb-3">Smart Retry</p><h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-3">Ronda de repaso exprés</h2>
-    <p class="text-sm text-slate-400 leading-relaxed mb-7 max-w-md mx-auto">Detectamos <span class="font-bold text-amber-300" id="bridge-count">0</span> conceptos con baches. Antes de cerrar la sesión, reforzarás exclusivamente esos puntos débiles.</p>
-    <div id="bridge-list" class="text-left space-y-2.5 mb-8 max-h-72 overflow-y-auto pr-1"></div>
-    <button id="btn-start-retry" class="btn-primary w-full sm:w-auto">Iniciar repaso obligatorio<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-  </div></section>
+  <section id="screen-bridge" class="hidden max-w-2xl mx-auto" aria-label="Repaso de conceptos fallados">
+    <div class="glass rounded-3xl p-7 sm:p-10 text-center fade-in">
+      <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(249,115,22,.2));border:1px solid rgba(251,191,36,.35)" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+      <p class="text-[0.68rem] font-extrabold tracking-[0.2em] text-amber-300/80 uppercase mb-3">Smart Retry</p><h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-3">Ronda de repaso exprés</h2>
+      <p class="text-sm text-slate-400 leading-relaxed mb-7 max-w-md mx-auto">Detectamos <span class="font-bold text-amber-300" id="bridge-count">0</span> conceptos con baches. Antes de cerrar la sesión, reforzarás exclusivamente esos puntos débiles.</p>
+      <div id="bridge-list" class="text-left space-y-2.5 mb-8 max-h-72 overflow-y-auto pr-1"></div>
+      <button id="btn-start-retry" class="btn-primary w-full sm:w-auto" type="button">Iniciar repaso obligatorio<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </section>
 
-  <section id="screen-results" class="hidden max-w-4xl mx-auto">
+  <section id="screen-results" class="hidden max-w-4xl mx-auto" aria-label="Resultados de la sesión" aria-live="polite">
     <div class="glass rounded-3xl p-6 sm:p-9 mb-6 fade-in"><div class="flex flex-col sm:flex-row items-center gap-7">
-      <div class="relative shrink-0"><svg viewBox="0 0 120 120" class="w-32 h-32 -rotate-90"><defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#818cf8"/><stop offset="55%" stop-color="#a855f7"/><stop offset="100%" stop-color="#e879f9"/></linearGradient></defs><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/><circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" style="transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)"/></svg><div class="absolute inset-0 grid place-items-center"><span class="text-3xl font-extrabold text-white tabular" id="res-pct">0%</span></div></div>
+      <div class="relative shrink-0"><svg viewBox="0 0 120 120" class="w-32 h-32 -rotate-90" aria-hidden="true"><defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#818cf8"/><stop offset="55%" stop-color="#a855f7"/><stop offset="100%" stop-color="#e879f9"/></linearGradient></defs><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/><circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="url(#ringGrad)" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73"/></svg><div class="absolute inset-0 grid place-items-center"><span class="text-3xl font-extrabold text-white tabular" id="res-pct">0%</span></div></div>
       <div class="text-center sm:text-left flex-1"><p class="text-[0.68rem] font-extrabold tracking-[0.2em] text-indigo-300/80 uppercase mb-2">Sesión finalizada</p><h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-2" id="res-title">Reporte de dominio</h2><p class="text-sm text-slate-400 leading-relaxed" id="res-subtitle"></p><div class="flex flex-wrap justify-center sm:justify-start gap-2 mt-4"><span class="text-[0.7rem] px-3 py-1.5 rounded-lg glass-soft text-slate-300" id="res-correct"></span><span class="text-[0.7rem] px-3 py-1.5 rounded-lg glass-soft text-slate-300" id="res-recovered"></span></div></div>
     </div></div>
     <div class="glass rounded-3xl p-6 sm:p-8 mb-6 fade-in"><h3 class="text-sm font-bold tracking-wide text-slate-300 uppercase mb-6">Dominio por fuente</h3><div id="res-breakdown" class="space-y-5"></div></div>
     <div id="res-pending-wrap" class="glass rounded-3xl p-6 sm:p-8 mb-6 fade-in"><h3 class="text-sm font-bold tracking-wide text-slate-300 uppercase mb-5">Conceptos a reforzar</h3><div id="res-pending" class="space-y-3"></div></div>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <button id="btn-retry-pending" class="btn-primary hidden"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Repetir fallos restantes</button>
-      <button id="btn-home" class="btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Volver al inicio</button>
+      <button id="btn-retry-pending" class="btn-primary hidden" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Repetir fallos restantes</button>
+      <button id="btn-home" class="btn-ghost" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Volver al inicio</button>
     </div>
   </section>
 </main>
