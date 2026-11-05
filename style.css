@@ -1,0 +1,314 @@
+/* ================================================================
+   Zen Study · TEA 2do Control
+   Estilos personalizados: Glassmorphism realista + Foco Zen
+================================================================ */
+
+:root {
+  --bg-deep: #070b14;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 0%, #101a30 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 90% 10%, #14102b 0%, transparent 55%),
+    radial-gradient(ellipse 100% 70% at 50% 110%, #0a1524 0%, transparent 60%),
+    #070b14;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- Formas orgánicas flotantes ---------- */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(95px);
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.42), transparent 70%);
+  top: -180px;
+  left: -160px;
+  animation: float1 24s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.36), transparent 70%);
+  top: 12%;
+  right: -150px;
+  animation: float2 28s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22), transparent 70%);
+  bottom: -260px;
+  left: 22%;
+  animation: float3 32s ease-in-out infinite;
+}
+
+.blob-4 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251, 113, 133, 0.18), transparent 70%);
+  bottom: 10%;
+  right: 8%;
+  animation: float1 26s ease-in-out infinite reverse;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(60px, 50px) scale(1.12); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-70px, 70px) scale(1.08); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(40px, -60px) scale(1.15); }
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.06) inset,
+    0 8px 24px -8px rgba(0, 0, 0, 0.45),
+    0 24px 60px -24px rgba(0, 0, 0, 0.6);
+}
+
+.glass-soft {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-hover {
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.glass-hover:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+    0 12px 34px -10px rgba(0, 0, 0, 0.55),
+    0 30px 70px -28px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Botones de opción ---------- */
+.opt {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    opacity 0.3s ease;
+}
+
+.opt:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.opt:disabled {
+  cursor: default;
+}
+
+.opt.correct {
+  background: rgba(52, 211, 153, 0.14);
+  border-color: rgba(52, 211, 153, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.22),
+    0 0 26px -8px rgba(52, 211, 153, 0.5);
+}
+
+.opt.wrong {
+  background: rgba(251, 113, 133, 0.13);
+  border-color: rgba(251, 113, 133, 0.5);
+  box-shadow: 0 0 0 1px rgba(251, 113, 133, 0.2);
+}
+
+.opt.dim {
+  opacity: 0.38;
+}
+
+.opt-letter {
+  flex: 0 0 1.8rem;
+  height: 1.8rem;
+  border-radius: 0.6rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  transition: all 0.18s ease;
+}
+
+.opt.correct .opt-letter {
+  background: rgba(52, 211, 153, 0.28);
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #a7f3d0;
+}
+
+.opt.wrong .opt-letter {
+  background: rgba(251, 113, 133, 0.26);
+  border-color: rgba(251, 113, 133, 0.55);
+  color: #fecdd3;
+}
+
+/* ---------- Feedback ---------- */
+.fb-anim {
+  animation: fbIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fbIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.45s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Botón primario ---------- */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 55%, #a855f7 100%);
+  box-shadow:
+    0 10px 30px -10px rgba(99, 102, 241, 0.75),
+    0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 16px 40px -12px rgba(99, 102, 241, 0.85),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f1f5f9;
+}
+
+/* ---------- Barra de progreso ---------- */
+.progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  transition: width 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.6);
+}
+
+/* ---------- Utilidades ---------- */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
